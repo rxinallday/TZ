@@ -1,0 +1,33 @@
+CC = gcc
+CFLAGS = -Wall -O2 -std=c99
+
+TARGETS = validator linklist fst_srch time_wrk
+
+all: $(TARGETS)
+
+validator: validator.c
+	$(CC) $(CFLAGS) -o validator validator.c
+
+linklist: linklist.c
+	$(CC) $(CFLAGS) -o linklist linklist.c
+
+fst_srch: fst_srch.c
+	$(CC) $(CFLAGS) -o fst_srch fst_srch.c
+
+time_wrk: time_wrk.c
+	$(CC) $(CFLAGS) -o time_wrk time_wrk.c
+
+clean:
+	rm -f $(TARGETS)
+
+test: all
+	@echo "Running validator..."
+	./validator
+	@echo "\nRunning linked list..."
+	./linklist
+	@echo "\nRunning fast search..."
+	./fst_srch
+	@echo "\nRunning work time calc..."
+	./time_wrk
+
+.PHONY: all clean test
